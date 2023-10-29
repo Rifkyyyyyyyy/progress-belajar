@@ -3,13 +3,14 @@ const app = express();
 const port = 3000;
 const axios = require('axios');
 
+// bua be nya,ntar ditangkep make dart
+
 app.get('/api/pokemon', async (req, res) => {
   try {
-    // Ambil data dari PokeAPI (sumber eksternal) menggunakan axios
     const response = await axios.get('https://pokeapi.co/api/v2/pokemon/pikachu');
 
     if (response.status === 200) {
-      // Ambil data JSON dari respons axios
+
       const jsonData = response.data;
       const firstPokemon = jsonData.forms[0];
       res.json(firstPokemon);
