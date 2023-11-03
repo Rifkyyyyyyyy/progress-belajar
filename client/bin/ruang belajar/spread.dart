@@ -2,13 +2,13 @@ void main() {
   List<int> a = [1, 2, 3, 4, 5];
   List<String> b = ['enam', 'tujuh', 'delapan', 'sembilan', 'sepuluh'];
   List<dynamic> gabungArgumen = [...a, ...b];
-  belajarSpread operatorSpread = belajarSpread();
+  BelajarSpread operatorSpread = BelajarSpread();
   operatorSpread.belajar();
   operatorSpread.restOperator(gabungArgumen);
   operatorSpread.loop();
 }
 
-class belajarSpread {
+class BelajarSpread {
   List<dynamic> a = [1, 2, 3, 4, 5];
   List<dynamic> b = [6, 7, 8, 9, 10];
 
