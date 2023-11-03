@@ -77,11 +77,8 @@ class BelajarOperator {
   void logikaOr() {
     bool y = true;
     bool x = true;
-    if (y || x) {
-      print('halo');
-    }
-    if (!y) {
-      print('halo juga');
+    if (y | x) {
+      print('object');
     }
   }
 

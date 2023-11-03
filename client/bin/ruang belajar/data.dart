@@ -54,13 +54,13 @@ class operatorX {
   }
 
   void penugasan() {
-    List<dynamic> s = [1, 2, 3, 4, 5];
+    List<int> s = [1, 2, 3, 4, 5];
     if (s.length == 5) {
       print(s[0] += 10);
       print(s[3] *= 10);
       print(s[4] %= 2);
       print(s[2].toDouble());
-      print((s[2] /= 2.5).toInt());
+      print(s[2] = s[2] ~/ 2.5);
     }
   }
 
@@ -150,17 +150,15 @@ class operatorX {
   }
 
   void property() {
-  Map<dynamic, dynamic> s = {};
-  List<int> c = [1, 2, 3, 4, 5];
-  c.forEach((index) {
-        if (index == c[1]) {
-      c[1] = 10;
-    }
-    print('hasil loop : ${index}');
-
-  });
-}
-
+    Map<dynamic, dynamic> s = {};
+    List<int> c = [1, 2, 3, 4, 5];
+    c.forEach((index) {
+      if (index == c[1]) {
+        c[1] = 10;
+      }
+      print('hasil loop : ${index}');
+    });
+  }
 
   void belajarSet(Set<dynamic> a) {
     print(a);
