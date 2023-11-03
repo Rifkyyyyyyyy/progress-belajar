@@ -1,2 +1,3 @@
-Tenkyu pak eko :)
-Tenkyu pak erico :D
+cuman buat progress belajar dasar aja.
+
+thanks buat pak eko dan pak erico buat materinya.
