@@ -1,1 +1,2 @@
-cuman buat progress belajar dasar aja.
+Tenkyu pak eko :)
+Tenkyu pak erico :D
