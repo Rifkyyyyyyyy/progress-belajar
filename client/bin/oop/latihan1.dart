@@ -216,6 +216,7 @@ void main() {
     'lamborghini',
     'ducati',
     'ferrari'
+    ''
   ];
     List<String> model = [
     'Toyota rush',
@@ -227,8 +228,9 @@ void main() {
     'lamborghini tiga ribu',
     'ducati leo',
     'ferrari seri tiga'
+    ''
   ];
-  
+
   List<Car> u = [];
   for (var i = 0; i < brand.length; i++) {
     var g = Car(brand: brand[i] , model: model[i] );
@@ -257,7 +259,7 @@ class Car {
   }
 
   Map<String, dynamic> startEngine() {
-    if (y) {
+    if (brand != '' && model != '') {
       return {
         'brand': brand,
         'model': model,
