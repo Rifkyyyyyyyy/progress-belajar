@@ -68,53 +68,139 @@
 // }
 
 // 4 )Buatlah class Product dengan properti name, price, dan quantity. Tambahkan method calculateTotalPrice yang mengembalikan total harga produk berdasarkan harga dan jumlahnya.
-void main() async {
-  List<String> a = ['tas', 'jam', 'baju', 'gelang', 'hoodie'];
-  List<double> u = [20000.0, 39999.0, 90029.0, 40000.0, 29099.0];
-  List<int> o = [1, 2, 4, 10, 9];
-  List<int> p = [0, 1, 2, 8, 7];
-  for (int i = 0; i < a.length; i++) {
-    var b = Product(name: a[i].trim(), price: u[i], quantity: o[i]);
-    b.addProduct();
-    double totalPrice = b.calculateTotalPrice();
-    int d = await b.decrement(p[i]);
-    print('Total harga : ${b.name}: $totalPrice\nsetelah dikurangi : $d\n');
-  }
-}
 
-class Product {
-  String name;
-  double price;
-  int quantity;
-  int id = 0;
-  List<Map<String, dynamic>> product = [];
+// import 'dart:math';
 
-  Product({required this.name, required this.price, required this.quantity});
+// void main() async {
+//   List<String> a = ['tas', 'jam', 'baju', 'gelang', 'hoodie'];
+//   List<double> u = [20000.0, 39999.0, 90029.0, 40000.0, 29099.0];
+//   List<int> o = [1, 2, 4, 10, 9];
+//   List<int> p = [0, 1, 2, 8, 7];
 
-  void addProduct() {
-    id++;
-    product.add({'id': id, 'product': name, 'harga': price, 'jumlah': quantity});
-    print('id: $id, product: $name, harga: $price, jumlah: $quantity');
-  }
+//   for (int i = 0; i < a.length; i++) {
+//     var b = Product(name: a[i].trim(), price: u[i], quantity: o[i]);
+//     b.addProduct();
+//     int idn = p[i];
+//     int randomValue = int.parse(await b.random(idn));
+//     int d = await b.decrement(randomValue);
+//     double totalPrice = b.calculateTotalPrice();
 
-  double calculateTotalPrice() {
-    return price * quantity;
-  }
+//     print('Total harga : ${b.name}: $totalPrice\nsetelah dikurangi : $d\n');
+//     print('User yang mengubah jumlah : ${p[i]}\n');
+//   }
+// }
 
-  Future<int> decrement(int num) async {
-    if (quantity > 1) {
-      await Future.delayed(Duration(seconds: 2));
-      return quantity - num;
-    } else {
-      return 0;
-    }
-  }
-}
+// class Product {
+//   String name;
+//   double price;
+//   int quantity;
+//   int id = 0;
+//   List<Map<String, dynamic>> product = [];
+//   Product({required this.name, required this.price, required this.quantity});
 
+//   void addProduct() {
+//     id++;
+//     product
+//         .add({'id': id, 'product': name, 'harga': price, 'jumlah': quantity});
+//     print('id: $id, product: $name, harga: $price, jumlah: $quantity');
+//   }
+
+//   double calculateTotalPrice() {
+//     return price * quantity;
+//   }
+
+//   Future<int> decrement(int num) async {
+//     if (quantity > 1) {
+//       await Future.delayed(Duration(seconds: 2));
+//       return quantity - num;
+//     } else {
+//       return num;
+//     }
+//   }
+
+//   Future<String> random(int idn) async {
+//     Random random = Random();
+//     print('mengambil data...');
+//     await Future.delayed(Duration(seconds: 2));
+//     int randomValue = random.nextInt(2) * product.length;
+//     return randomValue.toString();
+//   }
+// }
 
 //  5) Buatlah class Circle dengan properti radius. Tambahkan method calculateArea dan calculateCircumference yang mengembalikan luas dan keliling lingkaran.
 
-// Buatlah class Book dengan properti title, author, dan publishedYear. Tambahkan method getBookInfo yang mengembalikan informasi buku dalam format "Judul: [title], Penulis: [author], Tahun Terbit: [publishedYear]".
+// void main() {
+//   double nilai = 8.00;
+//   var b = Circle(radius: nilai);
+//   print('ruas lingkaran : ${b.calculateArea()}');
+//   print('keliling lingkaran : ${b.calculateCircumference()}');
+// }
+
+// class Circle {
+//   double? radius;
+
+//   Circle({this.radius});
+
+//   double calculateArea() {
+//     if (radius != null) {
+//       return 3.14 * radius! * radius!;
+//     } else {
+//       return 0.0;
+//     }
+//   }
+
+//   double calculateCircumference() {
+//     if (radius != null) {
+//       return 2 * 3.14 * radius!;
+//     } else {
+//       return 0.0;
+//     }
+//   }
+// }
+
+// Buatlah class Book dengan properti title, author, dan publishedYear. Tambahkan method getBookInfo yang mengembalikan
+//informasi buku dalam format "Judul: [title], Penulis: [author], Tahun Terbit: [publishedYear]".
+
+void main() {
+  List<String> p = ['rifky', 'kupli', 'mantul', 'udin'];
+  List<String> j = [
+    'ada bulan dimata kaki',
+    'nak makan es krim',
+    'ada hati yang sakit',
+    'bocah ngidam aerox'
+  ];
+  List<int> o = [2020, 2008, 2007, 2077];
+
+  List<Book> books = [];
+
+  for (var i = 0; i < p.length; i++) {
+    var book = Book(index: i, author: p[i], title: j[i], publishYear: o[i]);
+    books.add(book);
+  }
+
+  for (var book in books) {
+    print('${book.getBookInfo()}');
+  }
+}
+
+class Book {
+  String? author;
+  String? title;
+  int? publishYear;
+  int? index;
+
+  Book({this.author, this.title, this.publishYear, this.index});
+
+  Map<String, dynamic> getBookInfo() {
+    return {
+      'index': index,
+      'judul': title,
+      'penulis': author,
+      'tahun terbit': publishYear.toString(),
+    };
+  }
+}
+
 
 // Buatlah class Car dengan properti brand, model, dan year. Tambahkan method startEngine yang mencetak pesan "Mobil [brand] [model] [year] telah dinyalakan."
 
