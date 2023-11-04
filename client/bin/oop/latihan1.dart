@@ -161,48 +161,120 @@
 // Buatlah class Book dengan properti title, author, dan publishedYear. Tambahkan method getBookInfo yang mengembalikan
 //informasi buku dalam format "Judul: [title], Penulis: [author], Tahun Terbit: [publishedYear]".
 
-void main() {
-  List<String> p = ['rifky', 'kupli', 'mantul', 'udin'];
-  List<String> j = [
-    'ada bulan dimata kaki',
-    'nak makan es krim',
-    'ada hati yang sakit',
-    'bocah ngidam aerox'
-  ];
-  List<int> o = [2020, 2008, 2007, 2077];
+// void main() {
+//   List<String> p = ['rifky', 'kupli', 'mantul', 'udin'];
+//   List<String> j = [
+//     'ada bulan dimata kaki',
+//     'nak makan es krim',
+//     'ada hati yang sakit',
+//     'bocah ngidam aerox'
+//   ];
+//   List<int> o = [2020, 2008, 2007, 2077];
 
-  List<Book> books = [];
+//   List<Book> books = [];
 
-  for (var i = 0; i < p.length; i++) {
-    var book = Book(index: i, author: p[i], title: j[i], publishYear: o[i]);
-    books.add(book);
-  }
+//   for (var i = 0; i < p.length; i++) {
+//     var book = Book(index: i, author: p[i], title: j[i], publishYear: o[i]);
+//     books.add(book);
+//   }
 
-  for (var book in books) {
-    print('${book.getBookInfo()}');
-  }
-}
+//   for (var book in books) {
+//     print('${book.getBookInfo()}');
+//   }
+// }
 
-class Book {
-  String? author;
-  String? title;
-  int? publishYear;
-  int? index;
+// class Book {
+//   String? author;
+//   String? title;
+//   int? publishYear;
+//   int? index;
 
-  Book({this.author, this.title, this.publishYear, this.index});
+//   Book({this.author, this.title, this.publishYear, this.index});
 
-  Map<String, dynamic> getBookInfo() {
-    return {
-      'index': index,
-      'judul': title,
-      'penulis': author,
-      'tahun terbit': publishYear.toString(),
-    };
-  }
-}
-
+//   Map<String, dynamic> getBookInfo() {
+//     return {
+//       'index': index,
+//       'judul': title,
+//       'penulis': author,
+//       'tahun terbit': publishYear.toString(),
+//     };
+//   }
+// }
 
 // Buatlah class Car dengan properti brand, model, dan year. Tambahkan method startEngine yang mencetak pesan "Mobil [brand] [model] [year] telah dinyalakan."
+
+import 'dart:math';
+
+void main() {
+  List<String> brand = [
+    'toyota',
+    'alphard',
+    'supra',
+    'mio',
+    'satria Fu',
+    'suzuki',
+    'lamborghini',
+    'ducati',
+    'ferrari'
+  ];
+    List<String> model = [
+    'Toyota rush',
+    'A25A-FXS',
+    'supra bapak',
+    'mio penguras kantong',
+    'satria Fu motor idaman cewe-cewe',
+    'suzuki ertiga',
+    'lamborghini tiga ribu',
+    'ducati leo',
+    'ferrari seri tiga'
+  ];
+  
+  List<Car> u = [];
+  for (var i = 0; i < brand.length; i++) {
+    var g = Car(brand: brand[i] , model: model[i] );
+    g.randomizeEngineStatus(); 
+    u.add(g);
+  }
+  for (var car in u) {
+    print('${car.startEngine()}');
+  }
+}
+
+class Car {
+  String? brand;
+  String? model;
+  int? year;
+  bool? isTrue;
+  bool y = true;
+  Car({this.brand, this.model, this.year}) {
+    randomizeEngineStatus();
+  }
+
+  final Random random = Random();
+
+  void randomizeEngineStatus() {
+    isTrue = random.nextBool();
+  }
+
+  Map<String, dynamic> startEngine() {
+    if (y) {
+      return {
+        'brand': brand,
+        'model': model,
+        'year': year,
+        'Engine Active': isTrue
+      };
+    } else {
+      return {
+        'brand': null,
+        'model': null,
+        'year': null,
+        'Engine Active': false
+      };
+    }
+  }
+}
+
 
 // Buatlah class Person dengan properti name, age, dan address. Tambahkan method introduceYourself yang mencetak pesan "Halo, nama saya [name], saya berusia [age] tahun, dan saya tinggal di [address]."
 
