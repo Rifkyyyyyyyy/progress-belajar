@@ -1,8 +1,60 @@
 // Level 1: Pemula
 
-// Studi Kasus: Budi ingin menghitung luas dan keliling persegi. Buatlah program sederhana dengan class Square yang memiliki properti sideLength dan method calculateArea serta calculatePerimeter untuk menghitung luas dan keliling persegi. Budi ingin memasukkan panjang sisi dan mendapatkan hasil luas dan kelilingnya.
+// Studi Kasus: Budi ingin menghitung luas dan keliling persegi. Buatlah program sederhana dengan
+// class Square yang memiliki properti sideLength dan method calculateArea serta calculatePerimeter untuk
+// menghitung luas dan keliling persegi. Budi ingin memasukkan panjang sisi dan mendapatkan hasil luas dan kelilingnya.
 
-// Studi Kasus: Budi ingin menyimpan informasi tentang bukunya. Buat class Book dengan properti title dan author, serta method getBookInfo yang mengembalikan informasi buku. Budi ingin dapat mengakses informasi buku yang dimilikinya.
+// void main() {
+//   double u = 9.0;
+//   var y = Square(sideLenght: u);
+//   print('luas y : ${y.calculateArea(18.00)}');
+//   print('keliling y : ${y.calculatePerimeter()}');
+// }
+
+class Square {
+  double? sideLenght;
+  Square({this.sideLenght});
+
+  double calculateArea(double num) {
+    var y = sideLenght! * num;
+    return y;
+  }
+
+  double calculatePerimeter() {
+    var y = 4 * sideLenght!;
+    return y;
+  }
+}
+// Studi Kasus: Budi ingin menyimpan informasi tentang bukunya. Buat class Book dengan
+//properti title dan author, serta method getBookInfo yang mengembalikan informasi buku. Budi ingin dapat mengakses informasi buku yang dimilikinya.
+
+void main() {
+  Book myBook = Book();
+  List<Map<String, dynamic>> bookInfoList =
+      myBook.getBookInfoList(5 ,['malin kundang', 'keong mas', 'prabu siliwangi']);
+  print('$bookInfoList');
+}
+
+class Book {
+  String? title;
+  String? author;
+
+  List<Map<String, dynamic>> getBookInfoList(int num, List<dynamic> bookList) {
+    List<Map<String, dynamic>> bookInfoList = [];
+
+    for (var y = 0; y <= num; y++) {
+      Map<String, dynamic> bookInfo = {
+        'index': y,
+        'name': title,
+        'author': author,
+        'books': bookList,
+      };
+      bookInfoList.add(bookInfo);
+    }
+
+    return bookInfoList;
+  }
+}
 
 // Level 2: Menengah
 
