@@ -28,10 +28,11 @@ void maun() {
 // dalam dart loop dibagi menjadi 4 , yaitu , for , while , dowhile , foreach
 
 void main() {
-  int num = 0;
+  // int num = 0;
   var v = BelajarLoop();
   // v.forLoop(num);
-  v.whileLoop(num);
+  // v.whileLoop(num);
+  v.apalah();
 }
 
 class BelajarLoop {
@@ -42,16 +43,25 @@ class BelajarLoop {
     }
   }
 
- void whileLoop(int num) {
-  while (num < 10) {
-    var str = 'Hello, World!';
-    if (num < str.length) {
-      var y = str[num];
-      print(y.toString());
-    } else {
-      print('');
+  void whileLoop(int num) {
+    while (num < 10) {
+      var str = 'Hello, World!';
+      if (num < str.length) {
+        var y = str[num];
+        print(y.toString());
+      } else {
+        print('');
+      }
+      num++;
     }
-    num++; 
   }
-}
+
+  void apalah() {
+    int num = 1;
+    for (var i = 1; i <= 10; i++) {
+      var y = num * i;
+      print(y);
+      num++;
+    }
+  }
 }
