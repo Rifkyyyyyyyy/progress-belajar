@@ -1,11 +1,11 @@
 import 'dart:async';
 
 void main() {
-  myAttribute myAttr = myAttribute();
+  MyAttribute myAttr = MyAttribute();
   myAttr.gretting('rifky', myAttr.adios);
 }
 
-class myAttribute {
+class MyAttribute {
   Timer? adios;
   void c(List<dynamic> c, Function(dynamic) v) {}
 

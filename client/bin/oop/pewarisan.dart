@@ -47,3 +47,23 @@ class Kedua extends Pertama {
 //   a.rajaNgeong(nama);
 // }
 
+void main() {
+  var a = Keren();
+  a.greeting();
+  a.greeting2();
+}
+
+class Mantap {
+  String name = 'rifky';
+  int age = 18;
+  void greeting() {
+    print('hello $name , age : $age');
+  }
+}
+
+class Keren extends Mantap {
+  void greeting2() {
+    name = 'kupli';
+    print('hello $name');
+  }
+}

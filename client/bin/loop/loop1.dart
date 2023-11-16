@@ -27,7 +27,7 @@ void maun() {
 
 // dalam dart loop dibagi menjadi 4 , yaitu , for , while , dowhile , foreach
 
-void main() {
+void mpin() {
   // int num = 0;
   var v = BelajarLoop();
   // v.forLoop(num);
@@ -63,5 +63,20 @@ class BelajarLoop {
       print(y);
       num++;
     }
+  }
+}
+
+void main() {
+  seblak();
+}
+
+void seblak() {
+  String s = 'Makan seblak enak nih kayanya';
+  int counter = 0;
+
+  while (counter < s.length) {
+    var e = s[counter];
+    print(e);
+    counter++;
   }
 }
