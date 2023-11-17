@@ -57,3 +57,8 @@
 //   print(a);
 // }
 
+void main() {
+  var s = ['makan', 'tidur', 'main'];
+  var u = s[0] == 'makan' ? 'yes' : 'no';
+  print(u);
+}

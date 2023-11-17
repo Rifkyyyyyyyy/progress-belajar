@@ -3,32 +3,37 @@
 // yang mewarisi class Karyawan dan menambahkan atribut atau method yang khusus untuk manajer.
 
 void main() {
-  // List<String> namaKaryawan = ['samsul', 'udin', 'johan', 'kupli', 'ucup'];
-  // List<int> jumlahAlfa = [1, 0, 3, 5, 10];
-  // List<String> posisiKaryawan = ['supervisor', 'admin', 'hrd', 'operator', 'ob'];
-  // var karyawanList = <Karyawan>[];
+  List<String> namaKaryawan = ['rifky', 'kupli', 'tono', 'samsul', 'joko'];
+  var idCard = [1120003, 1222011, 1122333, 1211123, 11322234];
+  var posisiKaryawan = ['hrd', 'supervisor', 'admin', 'ob', 'operator'];
+  var jumlahIzin = [1, 5, 7, 40, 9];
+  var status = [
+    'Karyawan tetap',
+    'Karyawan kontrak',
+    'Magang',
+    'Magang',
+    'Karyawan tetap'
+  ];
 
-  // for (var i = 0; i < namaKaryawan.length; i++) {
-  //   var karyawan = Karyawan(
-  //     name: namaKaryawan[i],
-  //     id: i.toDouble(),
-  //     jumlahBolos: jumlahAlfa[i],
-  //     posisi: posisiKaryawan[i],
-  //     index: i,
-  //   );
-  //   karyawanList.add(karyawan);
-  // }
+  for (var i = 0; i < namaKaryawan.length; i++) {
+    Karyawan karyawan = Karyawan(
+      name: namaKaryawan[i],
+      id: idCard[i].toDouble(),
+      posisi: posisiKaryawan[i],
+      status: status[i],
+      jumlahBolos: jumlahIzin[i],
+    );
 
-  // // Contoh penggunaan:
-  // for (var karyawan in karyawanList) {
-  //   print('Index: ${karyawan.index}, Nama: ${karyawan.name}, ID: ${karyawan.id}, Posisi: ${karyawan.posisi}');
-  // }
+    var manajer = Manajer(
+      name: karyawan.name,
+      status: karyawan.status,
+      id: karyawan.id,
+      jumlahBolos: karyawan.jumlahBolos,
+      posisi: karyawan.posisi,
+    );
 
-  // var u = Manajer();
-  // u.cekJabatan('hrd');
-  // u.cekJumlahIzin(3);
-  // u.cekJumlahBolos(4);
-  // u.cekMasuk();
+    manajer.cekMasuk();
+  }
 }
 
 class Karyawan {
@@ -40,10 +45,10 @@ class Karyawan {
   int jumlahMinMasuk = 30;
   int jumlahMinIzin = 2;
   String? posisi;
-
-
+  String? status;
   Karyawan({
     this.name,
+    this.status,
     this.gaji,
     this.id,
     this.jumlahBolos,
@@ -54,23 +59,35 @@ class Karyawan {
 
 class Manajer extends Karyawan {
   List<double> gajiKaryawanSesuaiPosisi = [
-    300500.00,
-    400500.00,
-    210050.00,
-    1300500.00,
-    11500.00,
+    3200500.00,
+    4200500.00,
+    2210050.00,
+    13200500.00,
+    121500.00,
   ];
-  List<String> jabatan = ['supervisor', 'admin', 'hrd', 'operator', 'ob'];
-  double penguranganGajiPerhari = 100500.00;
+  List<String> jabatan = [
+    'supervisor',
+    'admin',
+    'hrd',
+    'operator',
+    'ob',
+    'staff',
+    'asistent',
+    'manager',
+    'quality control'
+  ];
+  double penguranganGajiPerhari = 1500.00;
   double tunjangan = 1500.00;
   double biayaMakan = 1500.00;
   double bpjs = 1600.00;
-  var bonus = 10500 * 2 % 10;
-
+  var bonus = 10400.0;
   var masuk = 0;
+
+
 
   Manajer({
     String? name,
+    String? status,
     double? gaji,
     double? id,
     int? jumlahBolos,
@@ -78,6 +95,7 @@ class Manajer extends Karyawan {
     int? index,
   }) : super(
           name: name,
+          status: status,
           gaji: gaji,
           id: id,
           jumlahBolos: jumlahBolos,
@@ -93,44 +111,76 @@ class Manajer extends Karyawan {
     this.jumlahBolos = jumlahBolos;
   }
 
-  void menghitungGajiAkhir() {
-    for (var i = 0; i < gajiKaryawanSesuaiPosisi.length; i++) {
-      var gajiPokok = gajiKaryawanSesuaiPosisi[i];
-      var potongan = tunjangan + biayaMakan + bpjs;
-      var gajiAkhir = gajiPokok - potongan;
 
-      if (jumlahMinIzin == 0 && jumlahMinMasuk == 30) {
-        gajiAkhir += bonus;
-        print('Rincian Gaji:');
-        print('Gaji Pokok : $gajiPokok');
-        print('Potongan    : -$potongan');
-        print('Bonus       : +$bonus');
-        print('Gaji Akhir  : $gajiAkhir');
+  void menghitungGajiAkhir() {
+    var jumlahMasuk = jumlahMinMasuk - (jumlahBolos ?? 0);
+    var max = jumlahMasuk <= 0 ? 0 : jumlahMasuk;
+    print('Rincian Kehadiran :');
+    print('$name masuk selama $max hari dan izin selama $jumlahBolos hari\n');
+    var posisiIndex = jabatan.indexOf(posisi ?? "");
+    var gajiPokok = gajiKaryawanSesuaiPosisi[posisiIndex].toInt();
+    var makan = biayaMakan *
+        ((jumlahMinMasuk - jumlahBolos!) > 0
+            ? (jumlahMinMasuk - jumlahBolos!)
+            : 0);
+    var potongan = tunjangan + makan + bpjs;
+    var potonganCuti = penguranganGajiPerhari * jumlahBolos!;
+    var dataPotongan = potongan + potonganCuti;
+    var gajiAkhir = gajiPokok - (potongan + potonganCuti);
+
+    var max2 = jumlahMasuk <= 0 ? 0.0 : gajiAkhir;
+
+    if (jumlahBolos! >= 30) {
+      print('Maaf kamu tidak dapat gaji bulan ini');
+    } else {
+      print('Rincian Gaji untuk posisi $posisi:');
+      print('Gaji Pokok : Rp.$gajiPokok');
+      print('---------------------------');
+      print('Potongan    : -$dataPotongan');
+      print('Rincian Potongan :');
+      print('  Tunjangan   : Rp.$tunjangan');
+      print('  Biaya Makan : Rp.$makan');
+      print('  BPJS        : Rp.$bpjs');
+
+      if (jumlahBolos! > jumlahMinIzin) {
+        print('  Potongan Perhari : $penguranganGajiPerhari x $jumlahBolos');
+        print('  Total Potongan Cuti : -Rp.$potonganCuti');
       } else {
-        print('$name Rincian Gaji:');
-        print('Gaji Pokok : $gajiPokok');
-        print('Potongan    : -$potongan');
-        print('Gaji Akhir  : $gajiAkhir');
+        print('Bonus       : + Rp.$bonus');
       }
     }
+
+    print('---------------------------');
+    print('Total Gaji Akhir  :Rp.${max2.toInt()}\n');
   }
 
   void cekMasuk() {
-    if (jumlahBolos! > jumlahMinIzin && (jumlahMinMasuk - jumlahBolos!) >= 2) {
-      masuk = jumlahMinMasuk - jumlahBolos!;
-      print('jumlah wajib bekerja $jumlahMinMasuk');
+    var jumlahMasuk = jumlahMinMasuk - (jumlahBolos ?? 0);
+    if (jumlahBolos! > jumlahMinIzin && jumlahMasuk >= 2) {
+      print('Index : $index');
+      print('Data Karyawan PT Maju Kebelakang');
+      print('--------------------------');
+      print('Nama : $name');
+      print('ID : ${id!.toInt()}');
+      print('Posisi : $posisi');
+      print('Status Karyawan : $status');
+      
+      print('--------------------------');
+      print('jumlah wajib bekerja : $jumlahMinMasuk');
       print('jumlah diwajarkan izin : $jumlahMinIzin');
-      print(
-          '$name masuk selama ${(jumlahMinMasuk - masuk)} hari dan izin selama $jumlahMinIzin hari');
       menghitungGajiAkhir();
     } else {
-      for (var i = 0; i < gajiKaryawanSesuaiPosisi.length; i++) {
-        var b = gajiKaryawanSesuaiPosisi[i] -
-            (penguranganGajiPerhari * jumlahBolos!);
-        print(
-            '$name masuk selama ${(jumlahMinMasuk - masuk)} hari dan izin selama $jumlahMinIzin hari');
-        print('total gaji kamu untuk posisi $i adalah : $b');
-      }
+      print('Index : $index');
+      print('Data Karyawan PT Maju Kebelakang');
+      print('--------------------------');
+      print('Nama : $name');
+      print('ID : ${id!.toInt()}');
+      print('Posisi : $posisi');
+      print('Status : $status');
+      print('--------------------------');
+      print('jumlah wajib bekerja : $jumlahMinMasuk');
+      print('jumlah diwajarkan izin : $jumlahMinIzin');
+      menghitungGajiAkhir();
     }
   }
 }

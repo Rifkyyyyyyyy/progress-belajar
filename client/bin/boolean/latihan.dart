@@ -1,5 +1,3 @@
-
-
 void main() {
   print(hasPermision('admin', true));
   print(checkPassword('makan ayam Dikantin'));
@@ -8,11 +6,11 @@ void main() {
 }
 
 bool latihan1(int num) {
-  if (num == 2 % 0) {
-    return true;
-  } else {
-    return false;
-  }
+   if (num == 2 % 0) {
+      return true;
+    } else {
+      return false;
+    }
 }
 
 bool hasPermision(String role, bool isAuth) {
@@ -54,7 +52,7 @@ bool triangle(double a, double b, double c) {
 }
 
 bool isPrima(int num) {
- int i = 5;
+  int i = 5;
   if (num <= 1) {
     return false;
   }
