@@ -6,7 +6,7 @@ void main() {
   List<String> namaKaryawan = ['rifky', 'kupli', 'tono', 'samsul', 'joko'];
   var idCard = [1120003, 1222011, 1122333, 1211123, 11322234];
   var posisiKaryawan = ['hrd', 'supervisor', 'admin', 'ob', 'operator'];
-  var jumlahIzin = [1, 5, 7, 40, 9];
+  var jumlahIzin = [0, 5, 7, 40, 9];
   var status = [
     'Karyawan tetap',
     'Karyawan kontrak',
@@ -83,8 +83,6 @@ class Manajer extends Karyawan {
   var bonus = 10400.0;
   var masuk = 0;
 
-
-
   Manajer({
     String? name,
     String? status,
@@ -111,12 +109,13 @@ class Manajer extends Karyawan {
     this.jumlahBolos = jumlahBolos;
   }
 
-
   void menghitungGajiAkhir() {
+    var terbatas = jumlahBolos! <= 0 ? 0 : jumlahMinMasuk - jumlahBolos!;
+    // var terlewat = terbatas 
     var jumlahMasuk = jumlahMinMasuk - (jumlahBolos ?? 0);
     var max = jumlahMasuk <= 0 ? 0 : jumlahMasuk;
     print('Rincian Kehadiran :');
-    print('$name masuk selama $max hari dan izin selama $jumlahBolos hari\n');
+    print('$name masuk selama $max hari dan izin selama $terbatas hari\n');
     var posisiIndex = jabatan.indexOf(posisi ?? "");
     var gajiPokok = gajiKaryawanSesuaiPosisi[posisiIndex].toInt();
     var makan = biayaMakan *
@@ -164,7 +163,7 @@ class Manajer extends Karyawan {
       print('ID : ${id!.toInt()}');
       print('Posisi : $posisi');
       print('Status Karyawan : $status');
-      
+
       print('--------------------------');
       print('jumlah wajib bekerja : $jumlahMinMasuk');
       print('jumlah diwajarkan izin : $jumlahMinIzin');
@@ -185,10 +184,111 @@ class Manajer extends Karyawan {
   }
 }
 
-
 // 2. Studi Kasus: Binatang
 // Buat class dasar Binatang dan beberapa subclass seperti Mamalia, Reptil, dan Burung.
 //Setiap subclass harus memiliki karakteristik unik, dan class dasar harus berisi sifat-sifat umum dari binatang.
+
+
+
+abstract class Binatang {
+  String? makanan;
+  String? alam;
+  int? jumlahKaki;
+  String? namaHewan;
+  String? jenisHewan;
+  int? id;
+
+
+  List<Map<String, dynamic>> dataHewan();
+  
+
+  Binatang({
+    this.id,
+    this.makanan,
+    this.jenisHewan,
+  });
+}
+
+class Mamalia extends Binatang {
+  String? jenisBulu;
+
+
+  Mamalia({
+    int? id,
+    String? makanan,
+    String? jenisHewan,
+    this.jenisBulu,
+  }) : super(id: id, makanan: makanan, jenisHewan: jenisHewan);
+
+  @override
+  List<Map<String, dynamic>> dataHewan() {
+    return [
+      {
+        'Id': id,
+        'Jenis hewan': jenisHewan,
+        'Nama hewan': namaHewan,
+        'Hidup di alam': alam,
+        'Jumlah kaki': jumlahKaki,
+        'Makanan': makanan,
+        'Jenis bulu': jenisBulu,
+      }
+    ];
+  }
+}
+
+class Reptil extends Binatang {
+  bool? bersisik;
+
+
+  Reptil({
+    int? id,
+    String? makanan,
+    String? jenisHewan,
+    this.bersisik,
+  }) : super(id: id, makanan: makanan, jenisHewan: jenisHewan);
+
+  @override
+  List<Map<String, dynamic>> dataHewan() {
+    return [
+      {
+        'Id': id,
+        'Jenis hewan': jenisHewan,
+        'Nama hewan': namaHewan,
+        'Hidup di alam': alam,
+        'Jumlah kaki': jumlahKaki,
+        'Makanan': makanan,
+        'Bersisik': bersisik,
+      }
+    ];
+  }
+}
+
+class Burung extends Binatang {
+  bool? terbang;
+
+
+  Burung({
+    int? id,
+    String? makanan,
+    String? jenisHewan,
+    this.terbang,
+  }) : super(id: id, makanan: makanan, jenisHewan: jenisHewan);
+
+  @override
+  List<Map<String, dynamic>> dataHewan() {
+    return [
+      {
+        'Id': id,
+        'Jenis hewan': jenisHewan,
+        'Nama hewan': namaHewan,
+        'Hidup di alam': alam,
+        'Jumlah kaki': jumlahKaki,
+        'Makanan': makanan,
+        'Bisa terbang': terbang,
+      }
+    ];
+  }
+}
 
 // 3.  Studi Kasus: Perangkat Elektronik
 // Buat class PerangkatElektronik dengan atribut seperti merek, model, dan tahun produksi.

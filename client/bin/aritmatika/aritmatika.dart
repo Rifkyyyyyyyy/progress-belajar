@@ -1,6 +1,7 @@
 void main() {
   aritmatika();
   aritmatika2([2, 3, 4, 5]);
+  y();
 }
 
 void aritmatika() {
@@ -15,4 +16,10 @@ void aritmatika2(List<int> num2) {
     var p = num2[i] * x;
     print(p);
   }
+}
+
+void y() {
+  double x = 9.9;
+ var y= x.floor();
+  print(y);
 }

@@ -66,4 +66,6 @@ double perkalianIndexI() {
   return 0.0;
 }
 
-void matrix() {}
+void matrix() {
+  
+}

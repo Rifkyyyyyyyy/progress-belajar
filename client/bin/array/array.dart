@@ -57,8 +57,40 @@
 //   print(a);
 // }
 
+// void main() {
+//   var s = ['makan', 'tidur', 'main'];
+//   var u = s[0] == 'makan' ? 'yes' : 'no';
+//   print(u);
+// }
+
 void main() {
-  var s = ['makan', 'tidur', 'main'];
-  var u = s[0] == 'makan' ? 'yes' : 'no';
-  print(u);
+  as();
+}
+
+void oo() {
+  var u = [1, 2, 3, 4, 5];
+  var y = [6, 7, 8, 9, 10];
+  var t = [...u, ...y];
+  var e = t.runtimeType == List || t.runtimeType == Set ? 'yes' : 'no';
+  print(e);
+  for (var i = 0; i < t.length; i++) {
+    print(t[i] * 2);
+  }
+}
+
+
+void as() {
+  var u = [3, 2, 1, 4, 5];
+  var s = u[0];
+  List<int> result = [];
+
+  for (var i = 0; i < u.length; i++) {
+    if (u[i] > s) {
+      result.add(u[i]);
+    }
+  }
+
+  for (var i = result.length - 1; i >= 0; i--) {
+    print(result[i]);
+  }
 }
