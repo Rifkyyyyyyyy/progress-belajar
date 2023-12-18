@@ -27,9 +27,25 @@
 //   int Function(int, int) x = (int b, int y) => b * y;
 // }
 
-void main({int num = 0}) {
-  for (int i = 10; i > num;) {
-    int a = num += 1;
-    print(a);
-  }
+// void main({int num = 0}) {
+//   for (int i = 10; i > num;) {
+//     int a = num += 1;
+//     print(a);
+//   }
+// }
+
+class Sample {
+  String username;
+  int age;
+
+  Sample(this.username, this.age);
+}
+
+void person(Sample user) {
+  print('User : ${user.username} , Age : ${user.age}');
+}
+
+void main() {
+  var a = Sample('rifky', 10);
+  person(a);
 }

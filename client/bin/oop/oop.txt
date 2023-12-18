@@ -1,0 +1,108 @@
+. Class dan Constructor
+dart
+Copy code
+class ContohWidget extends StatelessWidget {
+  final String teks;
+
+  ContohWidget(this.teks);  // Constructor untuk menginisialisasi properti 'teks'
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(teks);
+  }
+}
+ContohWidget adalah kelas yang merupakan widget Flutter.
+teks adalah properti dengan tipe data String yang diinisialisasi melalui konstruktor.
+Konstruktor dengan sintaks this.teks memungkinkan inisialisasi properti langsung.
+2. Inheritance (Pewarisan)
+dart
+Copy code
+class WidgetLain extends ContohWidget {
+  WidgetLain(String teks) : super(teks);
+
+  // tambahkan metode atau properti khusus
+}
+WidgetLain mewarisi (extends) sifat dan metode dari ContohWidget.
+Konstruktor menggunakan super(teks) untuk memanggil konstruktor kelas induk dengan nilai teks.
+3. Encapsulation (Enkapsulasi)
+dart
+Copy code
+class DataPribadi {
+  String _nama; // variabel private
+
+  String get nama => _nama; // getter
+
+  set nama(String value) {
+    if (value.isNotEmpty) {
+      _nama = value;
+    }
+  }
+}
+_nama adalah variabel privat yang tidak dapat diakses dari luar kelas.
+Getter nama digunakan untuk mendapatkan nilai _nama.
+Setter nama memvalidasi input sebelum mengubah nilai _nama.
+4. Abstraction (Abstraksi)
+dart
+Copy code
+abstract class Kendaraan {
+  void bergerak();
+}
+
+class Mobil extends Kendaraan {
+  @override
+  void bergerak() {
+    print('Mobil bergerak');
+  }
+}
+Kendaraan adalah kelas abstrak dengan metode abstrak bergerak().
+Mobil adalah kelas konkret yang mewarisi Kendaraan dan harus mengimplementasikan metode bergerak().
+5. Polymorphism (Polimorfisme)
+dart
+Copy code
+void tampilkanInfo(Kendaraan kendaraan) {
+  kendaraan.bergerak();
+}
+
+Kendaraan mobil = Mobil();
+tampilkanInfo(mobil);
+Fungsi tampilkanInfo dapat menerima objek dari kelas apa pun yang mengimplementasikan Kendaraan.
+Mobil diinisialisasi sebagai Kendaraan dan memanggil metode bergerak() sesuai dengan tipe sebenarnya.
+6. Mixins
+dart
+Copy code
+mixin Logger {
+  void log(String message) {
+    print('Log: $message');
+  }
+}
+
+class DataService with Logger {
+  // class ini akan memiliki metode log dari mixin Logger
+}
+Logger adalah mixin yang memberikan fungsionalitas log ke kelas lain.
+DataService menggunakan with Logger untuk menggabungkan (mixin) fungsionalitas Logger.
+7. Singleton Pattern
+dart
+Copy code
+class Singleton {
+  static final Singleton _instance = Singleton._internal();
+
+  factory Singleton() {
+    return _instance;
+  }
+
+  Singleton._internal();
+}
+Singleton menggunakan pola Singleton untuk memastikan hanya ada satu instansinya.
+Konstruktor _internal() hanya dapat diakses dari dalam kelas, dan factory Singleton memastikan satu-satunya cara untuk mendapatkan instansinya.
+8. Enums
+dart
+Copy code
+enum JenisKelamin { pria, wanita }
+
+void main() {
+  var gender = JenisKelamin.pria;
+  print(gender); // Output: JenisKelamin.pria
+}
+JenisKelamin adalah enumerasi dengan nilai pria dan wanita.
+Enumerasi memungkinkan penggunaan nilai terbatas yang dapat dibaca dan dimengerti secara jelas.

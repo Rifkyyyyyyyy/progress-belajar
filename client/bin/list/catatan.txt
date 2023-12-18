@@ -1,0 +1,119 @@
+List pada Dart
+
+List adalah salah satu tipe data koleksi yang umum digunakan di Dart. Ini merupakan urutan elemen dengan indeks yang dimulai dari 0. List dapat berisi elemen-elemen dengan tipe data yang sama atau berbeda. Berikut adalah beberapa properti dan metode yang umum digunakan pada List:
+
+Properti List Dart:
+length:
+
+Properti yang memberikan panjang atau jumlah elemen dalam List.
+dart
+Copy code
+List<int> numbers = [1, 2, 3, 4, 5];
+print(numbers.length); // Output: 5
+Metode List Dart:
+add():
+
+Menambahkan elemen ke akhir List.
+dart
+Copy code
+List<String> fruits = ['apple', 'banana'];
+fruits.add('orange');
+print(fruits); // Output: [apple, banana, orange]
+addAll():
+
+Menambahkan semua elemen dari iterable ke dalam List.
+dart
+Copy code
+List<String> fruits = ['apple', 'banana'];
+fruits.addAll(['orange', 'grape']);
+print(fruits); // Output: [apple, banana, orange, grape]
+remove():
+
+Menghapus elemen tertentu dari List.
+dart
+Copy code
+List<int> numbers = [1, 2, 3, 4, 5];
+numbers.remove(3);
+print(numbers); // Output: [1, 2, 4, 5]
+removeAt():
+
+Menghapus elemen pada indeks tertentu dari List.
+dart
+Copy code
+List<int> numbers = [1, 2, 3, 4, 5];
+numbers.removeAt(2);
+print(numbers); // Output: [1, 2, 4, 5]
+clear():
+
+Menghapus semua elemen dari List.
+dart
+Copy code
+List<String> fruits = ['apple', 'banana', 'orange'];
+fruits.clear();
+print(fruits); // Output: []
+contains():
+
+Memeriksa apakah suatu nilai ada dalam List.
+dart
+Copy code
+List<String> fruits = ['apple', 'banana', 'orange'];
+print(fruits.contains('banana')); // Output: true
+isEmpty dan isNotEmpty:
+
+Memeriksa apakah List kosong atau tidak.
+dart
+Copy code
+List<String> fruits = [];
+print(fruits.isEmpty);    // Output: true
+print(fruits.isNotEmpty); // Output: false
+forEach():
+
+Iterasi melalui setiap elemen dalam List.
+dart
+Copy code
+List<int> numbers = [1, 2, 3, 4, 5];
+numbers.forEach((number) => print(number));
+// Output:
+// 1
+// 2
+// 3
+// 4
+// 5
+sort():
+
+Mengurutkan elemen dalam List.
+dart
+Copy code
+List<int> numbers = [5, 2, 1, 4, 3];
+numbers.sort();
+print(numbers); // Output: [1, 2, 3, 4, 5]
+toList():
+
+Mengonversi objek iterable menjadi List.
+dart
+Copy code
+Set<int> numberSet = {1, 2, 3, 4, 5};
+List<int> numberList = numberSet.toList();
+print(numberList); // Output: [1, 2, 3, 4, 5]
+List.filled():
+
+Membuat List dengan elemen-elemen yang diisi dengan nilai tertentu.
+dart
+Copy code
+List<int> filledList = List.filled(3, 0);
+print(filledList); // Output: [0, 0, 0]
+List.from():
+
+Membuat List baru dari objek Iterable yang ada.
+dart
+Copy code
+Set<int> numberSet = {1, 2, 3, 4, 5};
+List<int> numberList = List.from(numberSet);
+print(numberList); // Output: [1, 2, 3, 4, 5]
+List.generate():
+
+Membuat List baru dengan elemen-elemen yang dihasilkan oleh fungsi tertentu.
+dart
+Copy code
+List<int> generatedList = List.generate(3, (index) => index * 2);
+print(generatedList); // Output: [0, 2, 4]

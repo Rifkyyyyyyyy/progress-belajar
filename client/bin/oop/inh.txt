@@ -1,0 +1,94 @@
+Definisi:
+
+Pewarisan (inheritance) adalah konsep dalam pemrograman berorientasi objek di mana suatu kelas dapat mewarisi sifat-sifat dan perilaku dari kelas lainnya. Dart mendukung pewarisan antar kelas.
+dart
+Copy code
+class Animal {
+  String type;
+
+  Animal(this.type);
+
+  void makeSound() {
+    print('Some generic sound');
+  }
+}
+
+class Dog extends Animal {
+  String breed;
+
+  Dog(String type, this.breed) : super(type);
+
+  void bark() {
+    print('Bark! Bark!');
+  }
+}
+Kelas Induk dan Kelas Anak:
+
+Kelas yang memberikan warisan disebut kelas induk atau superclass, sedangkan kelas yang menerima warisan disebut kelas anak atau subclass.
+dart
+Copy code
+class Animal {
+  // ...
+}
+
+class Dog extends Animal {
+  // ...
+}
+Menggunakan extends:
+
+Kata kunci extends digunakan untuk mendeklarasikan bahwa satu kelas akan mewarisi dari kelas lainnya.
+dart
+Copy code
+class Dog extends Animal {
+  // ...
+}
+Konstruktor Kelas Anak dan super:
+
+Kelas anak dapat memanggil konstruktor dari kelas induk menggunakan kata kunci super. Ini digunakan untuk menginisialisasi bagian-bagian dari objek yang diwarisi dari superclass.
+dart
+Copy code
+class Dog extends Animal {
+  String breed;
+
+  Dog(String type, this.breed) : super(type);
+}
+Overriding Metode:
+
+Kelas anak dapat menimpa (override) metode yang telah didefinisikan di kelas induk. Ini memungkinkan kelas anak memberikan implementasi yang berbeda untuk metode yang sudah ada di kelas induk.
+dart
+Copy code
+class Dog extends Animal {
+  @override
+  void makeSound() {
+    print('Bark! Bark!');
+  }
+}
+Polimorfisme:
+
+Pewarisan mendukung polimorfisme, yang memungkinkan objek dari kelas anak dianggap sebagai objek dari kelas induk. Ini memungkinkan untuk pemanggilan metode yang sesuai dengan kelas anak saat runtime.
+dart
+Copy code
+Animal myDog = Dog('Mammal', 'Golden Retriever');
+myDog.makeSound(); // Memanggil metode Dog, bukan metode Animal
+Abstract Class dan Interface:
+
+Dart mendukung kelas abstrak dan mixin sebagai cara untuk menerapkan konsep pewarisan tanpa membuat objek dari kelas tersebut. Abstract class menyediakan kerangka dasar dan metode abstrak yang harus diimplementasikan oleh kelas anak.
+dart
+Copy code
+abstract class Shape {
+  void draw();
+}
+
+class Circle extends Shape {
+  @override
+  void draw() {
+    print('Drawing a circle');
+  }
+}
+Pewarisan memungkinkan pembagian dan perluasan kode, sehingga mempermudah pengelolaan dan pemeliharaan program. Hal ini juga mendukung konsep-konsep seperti polimorfisme, encapsulation, dan code reusability.
+
+
+
+
+
+

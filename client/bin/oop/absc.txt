@@ -1,0 +1,94 @@
+Definisi:
+
+Abstract class adalah kelas yang tidak dapat
+diinstansiasi langsung. Tujuannya adalah menyediakan kerangka dasar untuk satu atau lebih kelas turunannya (subclasses).
+dart
+Copy code
+abstract class Animal {
+  void makeSound(); // Metode abstrak
+  void eat() {
+    print('Eating...');
+  }
+}
+Metode Abstrak:
+
+Abstract class dapat memiliki metode abstrak,
+yang hanya dideklarasikan tanpa implementasi.
+Kelas turunan wajib memberikan implementasi untuk metode-metode abstrak tersebut.
+dart
+Copy code
+abstract class Animal {
+  void makeSound(); // Metode abstrak
+}
+
+class Dog extends Animal {
+  @override
+  void makeSound() {
+    print('Bark!');
+  }
+}
+Keyword abstract:
+
+Kata kunci abstract digunakan untuk mendeklarasikan class sebagai abstract. Class yang mengandung setidaknya satu metode abstrak harus dideklarasikan sebagai abstract.
+dart
+Copy code
+abstract class Shape {
+  void draw(); // Metode abstrak
+}
+Kelas Turunan:
+
+Abstract class dapat digunakan sebagai kerangka dasar untuk kelas turunannya. Kelas turunan harus memberikan implementasi untuk semua metode abstrak yang ada dalam abstract class.
+dart
+Copy code
+class Circle extends Shape {
+  @override
+  void draw() {
+    print('Drawing a circle');
+  }
+}
+Konstruktor di Abstract Class:
+
+Abstract class dapat memiliki konstruktor, dan kelas turunannya harus memanggil konstruktor abstract class menggunakan kata kunci super dalam konstruktor mereka.
+dart
+Copy code
+abstract class Vehicle {
+  String brand;
+
+  Vehicle(this.brand);
+
+  void start();
+}
+
+class Car extends Vehicle {
+  Car(String brand) : super(brand);
+
+  @override
+  void start() {
+    print('$brand car started.');
+  }
+}
+Mixins:
+
+Abstract class dapat digunakan sebagai mixins untuk 
+membagikan fungsionalitas ke beberapa kelas.
+dart
+Copy code
+abstract class Logger {
+  void log(String message);
+}
+
+class ConsoleLogger implements Logger {
+  @override
+  void log(String message) {
+    print('Logging to console: $message');
+  }
+}
+
+class FileLogger implements Logger {
+  @override
+  void log(String message) {
+    print('Logging to file: $message');
+  }
+}
+Abstract class memberikan fleksibilitas dalam merancang hierarki kelas
+ dan mendorong pemahaman konsep pewarisan dan polimorfisme di Dart.

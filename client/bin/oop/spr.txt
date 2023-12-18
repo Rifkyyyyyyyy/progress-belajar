@@ -1,0 +1,92 @@
+Definisi:
+
+super adalah kata kunci dalam Dart yang digunakan untuk merujuk atau memanggil metode atau properti dari superclass (kelas induk) saat kita berada di dalam kelas anak (subclass).
+dart
+Copy code
+class Animal {
+  void eat() {
+    print('Animal is eating.');
+  }
+}
+
+class Dog extends Animal {
+  void eat() {
+    super.eat(); // Memanggil metode dari superclass
+    print('Dog is eating.');
+  }
+}
+Panggilan Metode Super:
+
+super digunakan untuk memanggil metode dari superclass dengan nama yang sama saat kita menimpa metode tersebut di dalam kelas anak.
+dart
+Copy code
+class Animal {
+  void makeSound() {
+    print('Some generic sound');
+  }
+}
+
+class Dog extends Animal {
+  @override
+  void makeSound() {
+    super.makeSound(); // Memanggil metode dari superclass
+    print('Bark! Bark!');
+  }
+}
+Konstruktor dengan super:
+
+Dalam konstruktor anak, super digunakan untuk memanggil konstruktor dari superclass. Ini digunakan untuk menginisialisasi bagian-bagian dari objek yang diwarisi dari superclass.
+dart
+Copy code
+class Animal {
+  String type;
+
+  Animal(this.type);
+}
+
+class Dog extends Animal {
+  String breed;
+
+  Dog(String type, this.breed) : super(type);
+}
+Properti Superclass:
+
+super dapat digunakan untuk merujuk ke properti superclass. Ini berguna ketika kita ingin mendapatkan nilai dari properti superclass yang sudah diinisialisasi di dalam konstruktor superclass.
+dart
+Copy code
+class Animal {
+  String type;
+
+  Animal(this.type);
+}
+
+class Dog extends Animal {
+  String breed;
+
+  Dog(String type, this.breed) : super(type) {
+    print(super.type); // Membaca nilai properti dari superclass
+  }
+}
+Mixins dan super:
+
+Dalam mixin, super digunakan untuk merujuk ke mixin atau superclass yang diterapkan.
+dart
+Copy code
+mixin Logger {
+  void log(String message) {
+    print('Logging: $message');
+  }
+}
+
+class MyClass with Logger {
+  void myMethod() {
+    super.log('This log is from MyClass');
+  }
+}
+Penggunaan super membantu dalam membangun hubungan antara superclass dan subclass, dan dalam beberapa konteks, mengakses fungsionalitas atau properti dari superclass.
+
+
+
+
+
+
